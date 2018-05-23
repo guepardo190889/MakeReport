@@ -19,7 +19,7 @@ public class Report {
 	public String getNameFile() {
 		return nameFile;
 	}
-	
+
 	public void setNameFile(String nameFile) {
 		this.nameFile = nameFile;
 	}
@@ -34,6 +34,10 @@ public class Report {
 
 	public String getContent() {
 		return content;
+	}
+
+	public String getContentWithTitle() {
+		return getTitle() + "\n" + getContent();
 	}
 
 	public void setContent(String content) {
@@ -53,16 +57,15 @@ public class Report {
 			// Crear archivo
 
 			try {
-				//Crear una abstracción de un archivo en objeto
+				// Crear una abstracción de un archivo en objeto
 				File file = new File(getNameFile() + "." + getExtension());
-				//Escribir bytes en un archivo
+				// Escribir bytes en un archivo
 				FileOutputStream fos = new FileOutputStream(file);
 				OutputStreamWriter osw = new OutputStreamWriter(fos);
 				BufferedWriter bw = new BufferedWriter(osw);
-				bw.write(getContent());
+				bw.write(getContentWithTitle());
 				bw.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
