@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 
 /**
  * @author Seth Luis
@@ -57,11 +58,11 @@ public class Report {
 			// Crear archivo
 
 			try {
-				// Crear una abstracción de un archivo en objeto
+				// Crear una abstracciï¿½n de un archivo en objeto
 				File file = new File(getNameFile() + "." + getExtension());
 				// Escribir bytes en un archivo
 				FileOutputStream fos = new FileOutputStream(file);
-				OutputStreamWriter osw = new OutputStreamWriter(fos);
+				OutputStreamWriter osw = new OutputStreamWriter(fos, StandardCharsets.UTF_8);
 				BufferedWriter bw = new BufferedWriter(osw);
 				bw.write(getContentWithTitle());
 				bw.close();
